@@ -1,141 +1,199 @@
-# ClientStories
+# Facet - Interactive Client Stories Component
 
-A sophisticated, interactive client testimonial component featuring smooth transitions, professional branding, and elegant typography. Showcases real client stories with a clean split-layout design and seamless navigation.
+A sleek, modern testimonial showcase featuring a split-layout design with smooth transitions between client stories. This component combines clean typography with interactive navigation to create an engaging client testimonial experience.
 
-## Live Demo
+## Live Preview
 
-[View Live Demo](https://thisislefa.github.io/Facet)
+[View Live Demo](https://thisislefa.github.io/Facet/) | [GitHub Repository](https://github.com/thisislefa/Facet)
+
+## Overview
+
+Facet is a responsive client testimonial component that showcases stories through a two-panel layout. The left panel displays client profiles with professional images, while the right panel presents testimonials, company logos, and detailed descriptions. Built with vanilla JavaScript for smooth transitions and optimal performance.
 
 ## Features
 
-- **Interactive Testimonial Carousel**: Smooth fade transitions between client stories with synchronized content updates
-- **Split-Layout Design**: Balanced two-column grid with profile cards and testimonial content
-- **Professional Branding**: Custom SVG logos for each client with consistent visual identity
-- **Elegant Typography**: Inter Tight font family with precise weight scaling and optimal readability
-- **Responsive Design**: Adapts seamlessly from desktop to mobile with intelligent layout adjustments
-- **Smooth Animations**: CSS transitions for content changes with fade effects
-- **Navigation Controls**: Intuitive previous/next buttons with hover states
-- **Accessibility**: Proper ARIA labels and semantic HTML structure
+- **Split-Layout Design**: Clean separation between client profile and testimonial content
+- **Animated Transitions**: Smooth fade animations between stories
+- **Interactive Navigation**: Previous/Next buttons with visual feedback
+- **Responsive Grid**: Adapts from 2-column desktop to single-column mobile
+- **Customizable Content**: Easily update client stories, images, and company logos
+- **Accessibility Ready**: Semantic HTML and ARIA labels
+- **Performance Optimized**: No external dependencies, minimal JavaScript
 
-## Tech Stack
+## Installation
 
-- **HTML5** - Semantic structure with clean, accessible markup
-- **CSS3** - CSS Grid, Flexbox, and custom properties with smooth transitions
-- **JavaScript** - ES6+ with interactive carousel functionality
-- **Google Fonts** - Inter Tight font family
-- **SVG Graphics** - Custom client logos and navigation icons
+### Direct Usage
+```html
+<!-- Add to your project -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="path/to/facet.css">
 
-## Quick Start
+<section class="cs-wrapper">
+  <!-- Copy HTML structure from index.html -->
+</section>
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/thisislefa/clientstories.git
-   cd clientstories
-   ```
+<script src="path/to/facet.js"></script>
+```
 
-2. **Open in browser**
-   ```bash
-   open index.html
-   ```
+### Local Setup
+```bash
+# Clone the repository
+git clone https://github.com/thisislefa/Facet.git
+cd Facet
+
+# Open in browser
+open index.html
+# or serve locally
+python3 -m http.server 8080
+```
 
 ## Project Structure
 
 ```
-clientstories/
-├── index.html          # Complete HTML with embedded CSS and JavaScript
-└── README.md           # Project documentation
-```
-
-## Usage
-
-### Basic Integration
-The client stories component is entirely self-contained in a single HTML file. Simply include it in your project:
-
-```html
-<!-- Copy the entire cs-wrapper section -->
-<section class="cs-wrapper">
-    <!-- Component content -->
-</section>
-```
-
-### Adding New Client Stories
-Extend the carousel by adding new story objects to the JavaScript array:
-
-```javascript
-const stories = [
-    {
-        name: "Client Name",
-        role: "Position, Company",
-        image: "path/to/image.jpg",
-        quote: "Client testimonial quote.",
-        description: "Detailed description of the project and results.",
-        logoHTML: `Your SVG logo code here`
-    }
-    // Add more stories here
-];
+Facet/
+├── index.html          # Main HTML structure
+├── style.css          # All styling and responsive design
+├── script.js          # Interactive functionality
+└── README.md          # Documentation
 ```
 
 ## Customization
 
-### Colors
-- Text Primary: `#1a1a1a`
-- Text Secondary: `#555555`, `#666666`
-- Background: `#f1f1f1`
-- Card Background: `#ffffff`
-- Navigation Buttons: `#d6d6d6`
+### CSS Variables
+The component uses the Inter Tight font family and a neutral color palette. Customize by modifying these core styles:
 
-### Typography
-- Main Title: 64px, 500 weight, -1.5px letter spacing
-- Quote Text: 38px, 500 weight, -1px letter spacing
-- Profile Name: 24px, 600 weight, -0.5px letter spacing
-- Description: 17px, regular weight
-- Subtitle: 18px, regular weight
+```css
+:root {
+  --font-family: 'Inter Tight', sans-serif;
+  --color-primary: #000000;
+  --color-secondary: #666666;
+  --color-accent: #b0b0b0;
+  --color-background: #ffffff;
+  --color-surface: #f1f1f1;
+  --transition-speed: 0.3s;
+}
+```
 
-### Layout
-- Container Max Width: 1200px
-- Grid Columns: 1fr 1.2fr (left/right ratio)
-- Grid Gap: 80px (desktop), 40px (mobile)
-- Card Aspect Ratio: 4/3 (profile images)
+### Adding More Stories
+Extend the `stories` array in `script.js`:
+
+```javascript
+const stories = [
+  {
+    name: "Client Name",
+    role: "Position, Company",
+    image: "https://path-to-image.jpg",
+    quote: "Client testimonial quote",
+    description: "Detailed description of the project and results",
+    logoHTML: `<!-- SVG or HTML for company logo -->`
+  },
+  // Add more stories here
+];
+```
+
+### Content Structure
+Each story object contains:
+- `name`: Client's full name
+- `role`: Position and company
+- `image`: URL to client portrait
+- `quote`: Main testimonial quote
+- `description`: Detailed case study description
+- `logoHTML`: HTML/logo markup for company branding
+
+## Responsive Design
+
+### Breakpoints
+- **Desktop (900px+)**: 2-column grid layout
+- **Tablet (600-900px)**: Single column with adjusted typography
+- **Mobile (<600px)**: Optimized for touch, stacked elements
+
+### Typography Scale
+- **Title**: 64px (Desktop) → 48px (Mobile)
+- **Quote**: 38px → 28px
+- **Description**: 17px
+- **Profile Name**: 24px
+- **Profile Role**: 15px
+
+## JavaScript API
+
+### Core Functions
+```javascript
+// Manual content update
+updateContent(index); // Switch to specific story index
+
+// Navigation controls
+elements.prevBtn.addEventListener('click', previousStory);
+elements.nextBtn.addEventListener('click', nextStory);
+
+// Current state
+currentIndex; // Currently displayed story index
+stories.length; // Total number of stories
+```
+
+### Event Listeners
+The component includes click handlers for navigation buttons with smooth transitions. The `fade-out` CSS class controls opacity transitions during content switching.
 
 ## Browser Support
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- Chrome 60+
+- Firefox 55+
+- Safari 12+
+- Edge 79+
+- iOS Safari 12+
+- Android Chrome 67+
 
-## Responsive Breakpoints
+## Performance Considerations
 
-- Desktop: 901px and above (2-column layout)
-- Mobile: 900px and below (1-column layout)
+1. **Image Optimization**: Use compressed, properly sized images
+2. **Lazy Loading**: Consider adding `loading="lazy"` to images
+3. **Font Loading**: Preconnect to Google Fonts for faster loading
+4. **JavaScript Optimization**: Minimal bundle size with no dependencies
 
-## Design Features
+## Accessibility
 
-- **Smooth Transitions**: 300ms fade effects for all content changes
-- **Balanced Grid**: Asymmetric columns for optimal content hierarchy
-- **Image Optimization**: Object-fit cover for consistent image presentation
-- **Navigation Design**: Circular buttons with hover and active states
-- **Typography Hierarchy**: Clear visual scaling from headlines to body text
-- **Color Consistency**: Monochromatic scheme with strategic grays
+- Semantic HTML structure
+- ARIA labels for navigation buttons
+- Keyboard navigation support
+- Sufficient color contrast ratios
+- Focus indicators for interactive elements
 
-## Contributing
+## Troubleshooting
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### Common Issues
+
+1. **Images not loading**: Check image URLs and CORS settings
+2. **Transitions not working**: Ensure CSS transition properties are supported
+3. **Layout breaks on mobile**: Verify viewport meta tag is present
+4. **JavaScript errors**: Check console for conflicts or syntax errors
+
+### Debug Mode
+Add this to your JavaScript console to inspect component state:
+
+```javascript
+console.log('Current Index:', currentIndex);
+console.log('Total Stories:', stories.length);
+console.log('Active Story:', stories[currentIndex]);
+```
 
 ## License
 
-[MIT License](https://github.com/thisislefa/ClientStories/blob/main/LICENSE)
+MIT License - Free for personal and commercial use.
 
 ## Author
 
-**Lefa Mofokeng**
-- GitHub: [@thisislefa](https://github.com/thisislefa)
-- Portfolio: [thisislefa.com](https://thisislefa.github.io/portfolio)
+**Lefa Mofokeng**  
+GitHub: [@thisislefa](https://github.com/thisislefa)
 
+## Contributing
 
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
+---
 
+Facet provides an elegant solution for showcasing client testimonials with a focus on clean design and smooth user experience. The component is production-ready and easily customizable for various use cases.
